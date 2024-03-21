@@ -37,15 +37,15 @@ class Ball
     ballGravity = gravityParameter;
   }//End Firework
   //
-  Ball(float xParameter, float yParameter, float diameterParameter, color colourParameter) {
+  Ball(float xParameter, float yParameter, float diameterParameter, color colourParameter, float xSpeedParameter, float ySpeedParameter, float xSpeedChangeParameter, float ySpeedChangeParameter) {
     this.x = xParameter;
     this.y = yParameter;
     this.diameter = diameterParameter;
     this.colour = colourParameter;
-    this.xSpeed = xDirection();
-    this.ySpeed = yDirection();
-    this.xSpeedChange = 1.6;
-    this.ySpeedChange = 1.6;
+    this.xSpeed = xSpeedParameter;
+    this.ySpeed = ySpeedParameter;
+    this.xSpeedChange = xSpeedChangeParameter;
+    this.ySpeedChange = ySpeedChangeParameter;
   }
   //
   float xDirection() {
@@ -87,14 +87,6 @@ class Ball
       xSpeed *= -1;
       diameter *= 1;
     }
-    if ( (x-diameter*1/2) < 0 ) {
-      xSpeed *= -1;
-      diameter *= 1;
-    }
-    if ( (x+diameter*1/2) > width ) {
-      xSpeed *= -1;
-      diameter *= 1;
-    }
     if ( (y-diameter*1/2) < 0 ) {
       ySpeed *= -1;
       diameter *= 1;
@@ -105,13 +97,13 @@ class Ball
     }
   }//End bounce
   //
-  void tableYUpdate( float tableYParameter, float tableHeightParameter, float tableWidthParameter, float tableXParameter, float racketXParameter, float racketYParameter, float racketWidthParameter, float racketHeightParameter, float racketLXParameter, float racketLYParameter, float racketRXParameter, float racketRYParameter ) {
+  void tableYUpdate( float tableXParameter, float tableYParameter, float tableWidthParameter, float tableHeightParameter, float racketLXParameter, float racketLYParameter, float racketLWidthParameter, float racketLHeightParameter, float racketRXParameter, float racketRYParameter, float racketRWidthParameter, float racketRHeightParameter ) {
     tableY = tableYParameter;
     tableHeight = tableHeightParameter;
     tableWidth = tableXParameter + tableWidthParameter;
     racketX = ( x < tableWidth*1/2 ) ? racketLXParameter : racketRXParameter;
     racketY = ( y < tableWidth*1/2 ) ? racketLYParameter : racketRYParameter;
-    racketWidth = racketWidthParameter;
-    racketHeight = racketHeightParameter;
+    racketWidth = ( x < tableWidth*1/2 ) ? racketLWidthParameter : racketRWidthParameter;
+    racketHeight = ( y < tableWidth*1/2 ) ? racketLHeightParameter : racketRHeightParameter;
   }//End tableXUpdate
 }//End Ball

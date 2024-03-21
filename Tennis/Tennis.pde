@@ -2,7 +2,7 @@
 Ball tennisBall;
 Ball[] fireworks = new Ball[25];
 Ball movedBall;
-Racket racketL, racketR;
+Racket tennisTable, racketL, racketR;
 //
 color tennisTableColour=5, white=#FFFFFF;
 float middle, gravity=0.5;
@@ -12,7 +12,8 @@ float borderRX1, borderRY1, borderRX2, borderRY2;
 boolean left=false, right=false;
 //
 void setup() {
-  fullScreen();
+  //fullScreen();
+  size(1800, 900);
   //Population
   tennisBall = new Ball();
   for (int i=0; i < fireworks.length; i++) {
@@ -37,7 +38,8 @@ void setup() {
   borderRX2 = width;
   borderRY2 = borderRY1;
   //
-  //movedBall = new Ball( mouseX, mouseY, tennisBall.diameter, tennisBall.colour );
+  movedBall = new Ball(width*-1, height*-1, tennisBall.diameter, tennisBall.colour, tennisBall.xSpeed, tennisBall.ySpeed, tennisBall.xSpeedChange, tennisBall.ySpeedChange);
+  //tennisTable = new Racket( ,  );
   racketL = new Racket( 0, tennisBall.diameter );
   racketR = new Racket( width, tennisBall.diameter );
 } //End setup
@@ -48,7 +50,7 @@ void draw() {
   racketL.draw();
   racketR.draw();
   //
-  tennisBall.tableYUpdate( racketL.tableX, racketL.tableY, racketL.tableWidth, racketL.tableHeight, racketL.racketX, racketR.racketX, racketL.racketY, racketR.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketHeight );
+  tennisBall.tableYUpdate( racketL.tableX, racketL.tableY, racketL.tableWidth, racketL.tableHeight, racketL.racketX, racketL.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketX, racketR.racketY, racketR.racketWidth, racketR.racketHeight );
   //
   //drawShapes();
   tennisBall.draw();
@@ -62,9 +64,7 @@ void keyPressed() {
   racketR.keyPressedR();
   //
   if (keyPressed) {
-    if (key == 'x' || key == 'X') {
-      exit();
-    }
+    if (key == 'x' || key == 'X') exit();
   }
 } //End keyPressed
 void keyReleased() {
