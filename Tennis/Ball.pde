@@ -3,10 +3,9 @@ class Ball
   //Global Variables
   float x, y, diameter;
   float xSpeed, ySpeed, xDirection, yDirection, xSpeedChange, ySpeedChange;
-  float tableY, tableWidth, tableHeight, racketX, racketY, racketWidth, racketHeight;
+  float tableX, tableY, tableWidth, tableHeight, racketX, racketY, racketWidth, racketHeight;
   color colour;
   float ballGravity=0.15;
-  float tableX;
   //static int count = 25
   //
   //Constructor
@@ -28,12 +27,12 @@ class Ball
   } //End Constructor
   //
   Ball(float x, float y, float gravityParameter) {
-    x = mouseX;
-    y = mouseY;
-    colour = color ( random(0, 255), random(0, 255), random(0, 255) );
-    diameter = random(1/20);
-    xSpeed = random(-5, 5);
-    ySpeed = random(-5, 5);
+    this.x = mouseX;
+    this.y = mouseY;
+    this.colour = color ( random(0, 255), random(0, 255), random(0, 255) );
+    this.diameter = random(1/20);
+    this.xSpeed = random(-5, 5);
+    this.ySpeed = random(-5, 5);
     ballGravity = gravityParameter;
   }//End Firework
   //
@@ -102,8 +101,8 @@ class Ball
     tableHeight = tableHeightParameter;
     tableWidth = tableXParameter + tableWidthParameter;
     racketX = ( x < tableWidth*1/2 ) ? racketLXParameter : racketRXParameter;
-    racketY = ( y < tableWidth*1/2 ) ? racketLYParameter : racketRYParameter;
+    racketY = ( x < tableWidth*1/2 ) ? racketLYParameter : racketRYParameter;
     racketWidth = ( x < tableWidth*1/2 ) ? racketLWidthParameter : racketRWidthParameter;
-    racketHeight = ( y < tableWidth*1/2 ) ? racketLHeightParameter : racketRHeightParameter;
+    racketHeight = ( x < tableWidth*1/2 ) ? racketLHeightParameter : racketRHeightParameter;
   }//End tableXUpdate
 }//End Ball

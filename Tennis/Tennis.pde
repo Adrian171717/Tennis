@@ -9,11 +9,12 @@ float middle, gravity=0.5;
 float netX, netY, netWidth, netHeight;
 float borderLX1, borderLY1, borderLX2, borderLY2;
 float borderRX1, borderRY1, borderRX2, borderRY2;
+float quit1X1, quit1Y1, quit1X2, quit1Y2, quit2X1, quit2Y1, quit2X2, quit2Y2;
 boolean left=false, right=false;
 //
 void setup() {
-  //fullScreen();
-  size(1800, 900);
+  fullScreen();
+  //size(1800, 900);
   //Population
   tennisBall = new Ball();
   for (int i=0; i < fireworks.length; i++) {
@@ -38,6 +39,15 @@ void setup() {
   borderRX2 = width;
   borderRY2 = borderRY1;
   //
+  quit1X1 = width*2/100;
+  quit1Y1 = 0 + (quit1X1 - width*0);
+  quit1X2 = width*6/100;
+  quit1Y2 = quit1Y1 + (quit1X2 - quit1X1);
+  quit2X1 = quit1X2;
+  quit2Y1 = quit1Y1;
+  quit2X2 = quit1X1;
+  quit2Y2 = quit1Y2;
+  //
   movedBall = new Ball(width*-1, height*-1, tennisBall.diameter, tennisBall.colour, tennisBall.xSpeed, tennisBall.ySpeed, tennisBall.xSpeedChange, tennisBall.ySpeedChange);
   //tennisTable = new Racket( ,  );
   racketL = new Racket( 0, tennisBall.diameter );
@@ -46,8 +56,10 @@ void setup() {
 //
 void draw() {
   background(tennisTableColour);
+  background(white);
+  drawShapes();
   //
-  racketL.draw();
+  //racketL.draw();
   racketR.draw();
   //
   tennisBall.tableYUpdate( racketL.tableX, racketL.tableY, racketL.tableWidth, racketL.tableHeight, racketL.racketX, racketL.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketX, racketR.racketY, racketR.racketWidth, racketR.racketHeight );
