@@ -1,7 +1,7 @@
 class Ball extends Circle {
   //Global Variables
   int ballDiameter;
-  float x, y, d, xSpeed, ySpeed, xDirection, yDirection, xSpeedChange, ySpeedChange;
+  float x, y, d, c, xSpeed, ySpeed, xDirection, yDirection, xSpeedChange, ySpeedChange;
   float racketLX, racketLY, racketLW, racketRX, racketRY, racketRW;
   //
   Ball(float x, float y, float w, float h, color c) {
@@ -24,10 +24,14 @@ class Ball extends Circle {
   }//End Night Mode Colour Selector
   //
   void ballMove(float xParameter, float yParameter, float dParameter, color cParameter, float xSpeedParameter, float ySpeedParameter, float xSpeedChangeParameter, float ySpeedChangeParameter) {
-  this.x = ;
-  this.y = ;
-  this.d = ;
-  this.c = ;
+  this.x = xParameter;
+  this.y = yParameter;
+  this.d = dParameter;
+  this.c = cParameter;
+  this.xSpeed = xSpeedParameter;
+  this.ySpeed = ySpeedParameter;
+  this.xSpeedChange = xSpeedChangeParameter;
+  this.ySpeedChange = ySpeedChangeParameter;
   } //End Move Ball
   //
   void ballBounce() {
