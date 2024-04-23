@@ -33,8 +33,10 @@ class Racket {
     fill(0);
     drawShapes();
     //
-    if ( left == true ) moveRacketLeft();
-    if ( right == true ) moveRacketRight();
+    if ( leftL == true ) moveRacketLLeft();
+    if ( rightL == true ) moveRacketLRight();
+    if ( leftR == true ) moveRacketRLeft();
+    if ( rightR == true ) moveRacketRRight();
     //
   }//End draw
   //
@@ -42,36 +44,56 @@ class Racket {
     //rect( tableX, tableY, tableWidth, tableHeight);
   }// End table
   void rackets() {
-    rect(racketX, racketY, racketWidth, racketHeight);
+    rect(racketX, racketY, racketWidth, racketHeight, 5);
   }//End rackets
   //
-  void moveRacketLeft() {
+  void moveRacketLLeft() {
+    if ( racketX < netX ) {
     racketX -= racketTravelDistance;
     if ( racketX < 0 ) racketX = 0;
     if ( racketX < (netX + netWidth) && racketX > netX ) racketX = (netX + netWidth);
-  }//End moveRacketLeft
+    }
+  }//End moveRacketLLeft
   //
-  void moveRacketRight() {
+  void moveRacketLRight() {
+    if ( racketX < netX ) {
     racketX += racketTravelDistance;
     if ( (racketX + racketWidth) > netX && (racketX + racketWidth) < (netX + netWidth) ) racketX = netX - racketWidth;
     if ( (racketX + racketWidth) > width ) racketX = width - racketWidth;
-  }//End moveRacketRight
+    }
+  }//End moveRacketLRight
+  //
+  void moveRacketRLeft() {
+    if ( racketX > netX ) {
+    racketX -= racketTravelDistance;
+    if ( racketX < 0 ) racketX = 0;
+    if ( racketX < (netX + netWidth) && racketX > netX ) racketX = (netX + netWidth);
+    }
+  }//End moveRacketRLeft
+  //
+  void moveRacketRRight() {
+    if ( racketX > netX ) {
+    racketX += racketTravelDistance;
+    if ( (racketX + racketWidth) > netX && (racketX + racketWidth) < (netX + netWidth) ) racketX = netX - racketWidth;
+    if ( (racketX + racketWidth) > width ) racketX = width - racketWidth;
+    }
+  }//End moveRacketRRight
   //
   void keyPressedL() {
-    if (key == 'a' || key == 'A') left=true;
-    if (key == 'd' || key == 'D') right=true;
+    if (key == 'a' || key == 'A') leftL=true;
+    if (key == 'd' || key == 'D') rightL=true;
   }//End keyPressedL
   void keyReleasedL() {
-    if (key == 'a' || key == 'A') left=false;
-    if (key == 'd' || key == 'D') right=false;
+    if (key == 'a' || key == 'A') leftL=false;
+    if (key == 'd' || key == 'D') rightL=false;
   }//End keyReleasedL
   //
   void keyPressedR() {
-    if (key == 'j' || key == 'J') left=true;
-    if (key == 'l' || key == 'L') right=true;
+    if (key == 'j' || key == 'J') leftR=true;
+    if (key == 'l' || key == 'L') rightR=true;
   }//End keyPressedR
   void keyReleasedR() {
-    if (key == 'j' || key == 'J') left=false;
-    if (key == 'l' || key == 'L') right=false;
+    if (key == 'j' || key == 'J') leftR=false;
+    if (key == 'l' || key == 'L') rightR=false;
   }//End keyReleasedR
 }//End Racket

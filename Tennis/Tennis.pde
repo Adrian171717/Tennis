@@ -10,7 +10,7 @@ float netX, netY, netWidth, netHeight;
 float borderLX1, borderLY1, borderLX2, borderLY2;
 float borderRX1, borderRY1, borderRX2, borderRY2;
 float quit1X1, quit1Y1, quit1X2, quit1Y2, quit2X1, quit2Y1, quit2X2, quit2Y2;
-boolean left=false, right=false;
+boolean leftL=false, rightL=false, leftR=false, rightR=false;
 //
 void setup() {
   fullScreen();
@@ -55,14 +55,15 @@ void setup() {
 } //End setup
 //
 void draw() {
-  background(tennisTableColour);
+  //background(tennisTableColour);
   background(white);
   drawShapes();
   //
-  //racketL.draw();
+  racketL.draw();
   racketR.draw();
   //
   tennisBall.tableYUpdate( racketL.tableX, racketL.tableY, racketL.tableWidth, racketL.tableHeight, racketL.racketX, racketL.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketX, racketR.racketY, racketR.racketWidth, racketR.racketHeight );
+  tennisBall.racketBounce( racketL.racketX, racketL.racketY, racketL.racketWidth, racketR.racketX, racketR.racketY, racketR.racketWidth );
   //
   //drawShapes();
   tennisBall.draw();
@@ -87,6 +88,9 @@ void keyReleased() {
 void mousePressed() {
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i] = new Ball(mouseX, mouseY, 0.5);
+  }
+  if ( mouseX>=quit1X1 && mouseX<=quit1X2 && mouseY>=quit1Y1 && mouseY<=quit1Y2 ) {
+    exit();
   }
 } //End mousePressed
 //
