@@ -6,6 +6,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //Global Variables
 boolean scoredL=false, scoredR=false;
+int ballDiameter;
 TennisTable tennisTable;
 Ball ball;
 Ball ballMove;
@@ -17,10 +18,11 @@ void setup() {
   //size(600,900);
   fullScreen();
   display();
+  //audio();
   //
   tennisTable = new TennisTable (appWidth*0, appHeight*1/10, appWidth, appHeight*8/10, 0);
-  ball = new Ball(tennisTable.w*1/2-ball.ballDiameter*1/2, tennisTable.y+tennisTable.h*1/2, ball.ballDiameter, ball.ballDiameter, 255);
-  ballMove = new Ball(width*-1, height*-1, ball.d, ball.c, ball.xSpeed, ball.ySpeed, ball.xSpeedChange, ball.ySpeedChange);
+  ball = new Ball(tennisTable.w*1/2-ballDiameter*1/2, tennisTable.y+tennisTable.h*1/2, ballDiameter, ballDiameter, 255);
+  //ballMove = new Ball(width*-1, height*-1, ball.d, ball.c, ball.xSpeed, ball.ySpeed, ball.xSpeedChange, ball.ySpeedChange);
   net = new Net(tennisTable.w*1/2-(tennisTable.w*1/55), tennisTable.y+tennisTable.h-(tennisTable.h*5/16), tennisTable.w*1/55, tennisTable.h*5/16, 255);
   racketL = new Racket(net.x*1/2-(tennisTable.w*1/12)*1/2, tennisTable.h+tennisTable.y*2/3, tennisTable.w*1/11, tennisTable.h*1/70, 255);
   racketR = new Racket(net.w+net.x*3/2-(tennisTable.w*1/12)*1/2, tennisTable.h+tennisTable.y*2/3, tennisTable.w*1/11, tennisTable.h*1/70, 255);
@@ -28,7 +30,7 @@ void setup() {
   racketR.netGrabber(net.x, net.y, net.w, net.h);
   //
   for (int i=0; i<fireworks.length; i++) {
-    fireworks[i] = new Ball (appWidth*-1, appHeight*-1, ball.ballDiameter, ball.ballDiameter, ball.c);
+    fireworks[i] = new Ball (appWidth*-1, appHeight*-1, ballDiameter, ballDiameter, 255);
   }
 }//End setup
 //
