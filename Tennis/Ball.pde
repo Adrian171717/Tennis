@@ -95,13 +95,17 @@ class Ball
       ySpeed *= -1;
       diameter *= 1;
     }
-    if ( (y+diameter) > racketLY && (x) > racketLX && (x+diameter) < racketLX+racketLWidth ) {
-      ySpeed *= -1;
-      diameter *= 1;
+    if ( x < width*1/2 ) {
+      if ( (y+diameter) > racketLY && (x) > racketLX && (x+diameter) < racketLX+racketLWidth ) {
+        ySpeed *= -1;
+        diameter *= 1;
+      }
     }
-    if ( (y+diameter) > racketRY && (x) > racketRX && (x+diameter) < racketRX+racketRWidth ) {
-      ySpeed *= -1;
-      diameter *= 1;
+    if ( x > width*1/2 ) {
+      if ( (y+diameter) > racketRY && (x) > racketRX && (x+diameter) < racketRX+racketRWidth ) {
+        ySpeed *= -1;
+        diameter *= 1;
+      }
     }
   }//End bounce
   void racketGrabber(float racketLXParameter, float racketLYParameter, float racketLWidthParameter, float racketLHeightParameter, float racketRXParameter, float racketRYParameter, float racketRWidthParameter, float racketRHeightParameter) {

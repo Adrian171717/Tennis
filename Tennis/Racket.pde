@@ -49,33 +49,33 @@ class Racket {
   //
   void moveRacketLLeft() {
     if ( racketX < netX ) {
-    racketX -= racketTravelDistance;
-    if ( racketX < 0 ) racketX = 0;
-    if ( racketX < (netX + netWidth) && racketX > netX ) racketX = (netX + netWidth);
+      racketX -= racketTravelDistance;
+      if ( racketX < 0 ) racketX = 0;
+      if ( racketX < (netX + netWidth) && racketX > netX ) racketX = (netX + netWidth);
     }
   }//End moveRacketLLeft
   //
   void moveRacketLRight() {
     if ( racketX < netX ) {
-    racketX += racketTravelDistance;
-    if ( (racketX + racketWidth) > netX && (racketX + racketWidth) < (netX + netWidth) ) racketX = netX - racketWidth;
-    if ( (racketX + racketWidth) > width ) racketX = width - racketWidth;
+      racketX += racketTravelDistance;
+      if ( (racketX + racketWidth) > netX && (racketX + racketWidth) < (netX + netWidth) ) racketX = netX - racketWidth;
+      if ( (racketX + racketWidth) > width ) racketX = width - racketWidth;
     }
   }//End moveRacketLRight
   //
   void moveRacketRLeft() {
     if ( racketX > netX ) {
-    racketX -= racketTravelDistance;
-    if ( racketX < 0 ) racketX = 0;
-    if ( racketX < (netX + netWidth) && racketX > netX ) racketX = (netX + netWidth);
+      racketX -= racketTravelDistance;
+      if ( racketX < 0 ) racketX = 0;
+      if ( racketX < (netX + netWidth) && racketX > netX ) racketX = (netX + netWidth);
     }
   }//End moveRacketRLeft
   //
   void moveRacketRRight() {
     if ( racketX > netX ) {
-    racketX += racketTravelDistance;
-    if ( (racketX + racketWidth) > netX && (racketX + racketWidth) < (netX + netWidth) ) racketX = netX - racketWidth;
-    if ( (racketX + racketWidth) > width ) racketX = width - racketWidth;
+      racketX += racketTravelDistance;
+      if ( (racketX + racketWidth) > netX && (racketX + racketWidth) < (netX + netWidth) ) racketX = netX - racketWidth;
+      if ( (racketX + racketWidth) > width ) racketX = width - racketWidth;
     }
   }//End moveRacketRRight
   //
