@@ -28,7 +28,7 @@ class Racket {
   //
   void draw() {
     table();
-    fill(racketColour);
+    fill(0);
     rackets();
     fill(0);
     drawShapes();

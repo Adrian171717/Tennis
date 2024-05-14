@@ -1,6 +1,6 @@
 class Ball extends Circle {
   //Global Variables
-  float x, y, d, c, g, xSpeed, ySpeed, xDirection, yDirection, xSpeedChange, ySpeedChange;
+  float d, g, xSpeed, ySpeed, xDirection, yDirection, xSpeedChange, ySpeedChange;
   float racketLX, racketLY, racketLW, racketRX, racketRY, racketRW;
   //
   Ball(float x, float y, float w, float h, color c) {
