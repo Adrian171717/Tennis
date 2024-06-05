@@ -52,7 +52,6 @@ void setup() {
   //tennisTable = new Racket( ,  );
   racketL = new Racket( 0, tennisBall.diameter );
   racketR = new Racket( width, tennisBall.diameter );
-  tennisBall.racketGrabber( racketL.racketX, racketL.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketX, racketR.racketY, racketR.racketWidth, racketR.racketHeight );
 } //End setup
 //
 void draw() {
@@ -63,7 +62,9 @@ void draw() {
   racketL.draw();
   racketR.draw();
   //
-  tennisBall.tableYUpdate( racketL.tableX, racketL.tableY, racketL.tableWidth, racketL.tableHeight, racketL.racketX, racketL.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketX, racketR.racketY, racketR.racketWidth, racketR.racketHeight );
+  println(racketL.racketX, racketR.racketX);
+  tennisBall.tableYUpdate( racketL.tableX, racketL.tableY, racketL.tableWidth, racketL.tableHeight, netX, netY, netWidth, netHeight, racketL.racketX, racketL.racketY, racketL.racketWidth, racketL.racketHeight, racketR.racketX, racketR.racketY, racketR.racketWidth, racketR.racketHeight );
+  println(tennisBall.ySpeed, tennisBall.xSpeed);
   //
   //drawShapes();
   tennisBall.draw();

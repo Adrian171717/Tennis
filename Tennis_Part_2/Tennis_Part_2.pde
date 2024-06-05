@@ -20,8 +20,12 @@ void setup() {
   display();
   //audio();
   //
+  ballDiameter = (appWidth > appHeight) ? appHeight : appWidth;
+  ballDiameter = ballDiameter*1/35;
+  //
   tennisTable = new TennisTable (appWidth*0, appHeight*1/10, appWidth, appHeight*8/10, 0);
   ball = new Ball(tennisTable.w*1/2-ballDiameter*1/2, tennisTable.y+tennisTable.h*1/2, ballDiameter, ballDiameter, 255);
+  println(ballDiameter, ball.w, ball.h);
   //ballMove = new Ball(width*-1, height*-1, ball.d, ball.c, ball.xSpeed, ball.ySpeed, ball.xSpeedChange, ball.ySpeedChange);
   net = new Net(tennisTable.w*1/2-(tennisTable.w*1/55), tennisTable.y+tennisTable.h-(tennisTable.h*5/16), tennisTable.w*1/55, tennisTable.h*5/16, 255);
   racketL = new Racket(net.x*1/2-(tennisTable.w*1/12)*1/2, tennisTable.h+tennisTable.y*2/3, tennisTable.w*1/11, tennisTable.h*1/70, 255);
@@ -44,6 +48,8 @@ void draw() {
     racketL.draw();
     racketR.draw();
     net.draw();
+    //
+    ball.tableXUpdate( tennisTable.x, tennisTable.y, tennisTable.w, tennisTable.h, net.x, net.y, net.w, net.h, racketL.x, racketL.y, racketL.w, racketL.h, racketR.x, racketR.y, racketR.w, racketR.h );
     //
     for (int i=0; i<fireworks.length; i++) {
       fireworks[i].draw();

@@ -3,7 +3,7 @@ class Ball
   //Global Variables
   float x, y, diameter;
   float xSpeed, ySpeed, xDirection, yDirection, xSpeedChange, ySpeedChange;
-  float tableX, tableY, tableWidth, tableHeight, racketX, racketY, racketWidth, racketHeight, racketLX, racketLY, racketLWidth, racketLHeight, racketRX, racketRY, racketRWidth, racketRHeight;
+  float tableX, tableY, tableWidth, tableHeight, netX, netY, netWidth, netHeight, racketX, racketY, racketWidth, racketHeight, racketLX, racketLY, racketLWidth, racketLHeight, racketRX, racketRY, racketRWidth, racketRHeight;
   color colour;
   float ballGravity=0.15;
   //static int count = 25
@@ -48,7 +48,12 @@ class Ball
   }
   //
   float xDirection() {
-    xDirection = 10;
+    xDirection = random(-1, 1);
+    if ( xDirection < 0 ) {
+      xDirection = -10;
+    } else {
+      xDirection = 10;
+    }
     while ( xDirection == 0 ) {
       xDirection = 10;
     }
@@ -56,7 +61,7 @@ class Ball
   }//End xDirection
   //
   float yDirection() {
-    yDirection = 10;
+    yDirection = random(-6,-9);
     while ( yDirection == 0 ) {
       yDirection = 10;
     }
@@ -76,6 +81,7 @@ class Ball
     ySpeed += ballGravity;
     x += xSpeed * xSpeedChange;
     y += ySpeed * ySpeedChange;
+    if ( ySpeed > -2 && ySpeed < 0 && y > width*3/4 && y < width*4/8 ) ySpeed += -5;
   } //End step
   //
   void bounce() {
@@ -96,34 +102,32 @@ class Ball
       diameter *= 1;
     }
     if ( x < width*1/2 ) {
-      if ( (y+diameter) > racketLY && (x) > racketLX && (x+diameter) < racketLX+racketLWidth ) {
-        ySpeed *= -1;
-        diameter *= 1;
+      if ( (y+diameter) > racketY && (x) > racketX && (x+diameter) < (racketX+racketWidth) ) {
+          ySpeed *= -1;
+          diameter *= 1;
       }
     }
     if ( x > width*1/2 ) {
-      if ( (y+diameter) > racketRY && (x) > racketRX && (x+diameter) < racketRX+racketRWidth ) {
-        ySpeed *= -1;
-        diameter *= 1;
+      if ( (y+diameter) > racketY && (x) > racketX && (x+diameter) < (racketX+racketWidth) ) {
+          ySpeed *= -1;
+          diameter *= 1;
       }
     }
+    /*
+    if ( (x+diameter) > netX && (x+diameter) < (netX+netWidth) && (y+diameter) > netY ) {
+     xSpeed *= -1;
+     */
   }//End bounce
-  void racketGrabber(float racketLXParameter, float racketLYParameter, float racketLWidthParameter, float racketLHeightParameter, float racketRXParameter, float racketRYParameter, float racketRWidthParameter, float racketRHeightParameter) {
-    racketLX = racketLXParameter;
-    racketLY = racketLYParameter;
-    racketLWidth = racketLWidthParameter;
-    racketLHeight = racketLHeightParameter;
-    racketRX = racketRXParameter;
-    racketRY = racketRYParameter;
-    racketRWidth = racketRWidthParameter;
-    racketRHeight = racketRHeightParameter;
-  }//End racketGrabber
   //
-  void tableYUpdate( float tableXParameter, float tableYParameter, float tableWidthParameter, float tableHeightParameter, float racketLXParameter, float racketLYParameter, float racketLWidthParameter, float racketLHeightParameter, float racketRXParameter, float racketRYParameter, float racketRWidthParameter, float racketRHeightParameter ) {
+  void tableYUpdate( float tableXParameter, float tableYParameter, float tableWidthParameter, float tableHeightParameter, float netXParameter, float netYParameter, float netWidthParameter, float netHeightParameter, float racketLXParameter, float racketLYParameter, float racketLWidthParameter, float racketLHeightParameter, float racketRXParameter, float racketRYParameter, float racketRWidthParameter, float racketRHeightParameter ) {
     tableX = tableXParameter;
     tableY = tableYParameter;
     tableWidth = tableXParameter + tableWidthParameter;
     tableHeight = tableHeightParameter;
+    netX = netXParameter;
+    netY = netYParameter;
+    netWidth = netWidthParameter;
+    netHeight = netHeightParameter;
     racketX = ( x < tableWidth*1/2 ) ? racketLXParameter : racketRXParameter;
     racketY = ( x < tableWidth*1/2 ) ? racketLYParameter : racketRYParameter;
     racketWidth = ( x < tableWidth*1/2 ) ? racketLWidthParameter : racketRWidthParameter;

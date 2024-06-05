@@ -20,11 +20,4 @@ class TennisTable extends Shape {
     return colour;
   }//End backgroundColour
   //
-  /* Features:
-   - Give ball top/left/right lines to bounce off of
-   - Give ball border dimensions and when it scores
-   - Give racket edge of border, what it defends
-   */
-  //
-  //
 } // End Circle
