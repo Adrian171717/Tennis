@@ -13,6 +13,7 @@ Ball ballMove;
 Ball[] fireworks = new Ball[25];
 Net net;
 Racket racketL, racketR;
+Quit quit;
 //
 void setup() {
   //size(600,900);
@@ -32,6 +33,7 @@ void setup() {
   racketR = new Racket(net.w+net.x*3/2-(tennisTable.w*1/12)*1/2, tennisTable.h+tennisTable.y*2/3, tennisTable.w*1/11, tennisTable.h*1/70, 255);
   racketL.netGrabber(net.x, net.y, net.w, net.h);
   racketR.netGrabber(net.x, net.y, net.w, net.h);
+  quit = new Quit(height*1/60, height*1/60, width*1/10, height*1/15, 0);
   //
   for (int i=0; i<fireworks.length; i++) {
     fireworks[i] = new Ball (appWidth*-1, appHeight*-1, ballDiameter, ballDiameter, 255);
